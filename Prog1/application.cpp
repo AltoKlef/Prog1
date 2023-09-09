@@ -80,6 +80,7 @@ int Tapplication::exec()
 
 int Tapplication::menu()
 {
+	int fuckyou;
 	printf("1 - fill in matrix\n");
 	printf("2 - find determinant\n");
 	printf("3 - transpositioning\n");
