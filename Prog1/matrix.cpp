@@ -86,3 +86,21 @@ number Tmatrix::determinant(number matrix[10][10], int n) {
 	}
 	return det;
 }
+void Tmatrix::Transposition() {
+	number** arr2;
+	arr2 = new number * [capacity];
+	for (int i = 0; i < capacity; i++) {
+		arr2[i] = new number[capacity];
+	}
+	for (int i = 0; i < capacity; i++) {
+		for (int j = 0; j < capacity; j++) {
+			arr2[i][j] = arr[i][j];
+		}
+	}
+	int a = 0;
+	for (int i = 0; i < capacity; i++) {
+		for (int j = 0; j < capacity; j++) {
+			arr[i][j] = arr2[j][i];
+		}
+	}
+}

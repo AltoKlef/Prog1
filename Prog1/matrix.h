@@ -16,7 +16,7 @@ public:
 	void FillMatrix(int cap);
 	void PrintMatrix();
 	number PrintDet();
-	
+	void Transposition();
 	
 	//friend ostream& operator<<(ostream&, Tmatrix&);
 private:

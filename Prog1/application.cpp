@@ -37,13 +37,23 @@ int Tapplication::exec()
 			cord.Y += 1;
 			SetConsoleCursorPosition(Output, cord);
 			SetConsoleTextAttribute(Output, 15);
-			matrix.PrintDet();
 			cord = { 0,0 };
 			SetConsoleCursorPosition(Output, cord);
 			break;
 		case 51:
 			system("cls");
-			cout << "3\n";
+			cord.Y = 7;
+			SetConsoleCursorPosition(Output, cord);
+			SetConsoleTextAttribute(Output, 3);
+			cout << "Here is your's matrix transposition: "<< endl;
+			cord.Y += 1;
+			SetConsoleCursorPosition(Output, cord);
+			SetConsoleTextAttribute(Output, 15);
+			matrix.Transposition();
+			matrix.PrintMatrix();
+			cord = { 0,0 };
+			SetConsoleCursorPosition(Output, cord);
+			break;
 			break;
 		case 52:
 		{
@@ -80,7 +90,6 @@ int Tapplication::exec()
 
 int Tapplication::menu()
 {
-	int fuckyou;
 	printf("1 - fill in matrix\n");
 	printf("2 - find determinant\n");
 	printf("3 - transpositioning\n");
