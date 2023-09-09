@@ -17,6 +17,7 @@ public:
 	void PrintMatrix();
 	number PrintDet();
 	void Transposition();
+	int rank();
 	
 	//friend ostream& operator<<(ostream&, Tmatrix&);
 private:

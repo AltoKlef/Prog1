@@ -58,7 +58,17 @@ int Tapplication::exec()
 		case 52:
 		{
 			system("cls");
-			cout << "4\n";
+			cord.Y = 7;
+			SetConsoleCursorPosition(Output, cord);
+			SetConsoleTextAttribute(Output, 3);
+			cout << "Here is your rank:" << endl;
+			cord.Y += 1;
+			SetConsoleCursorPosition(Output, cord);
+			SetConsoleTextAttribute(Output, 15);
+			cout << matrix.rank();
+			cord = { 0,0 };
+			SetConsoleCursorPosition(Output, cord);
+			
 		}
 		break;
 		case 53:

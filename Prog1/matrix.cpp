@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include "matrix.h"
 #include <iostream>
+#include <algorithm>
 
 using namespace std;
 Tmatrix::Tmatrix() {
@@ -63,6 +64,7 @@ void Tmatrix::fillWithZeros(number massiv[10][10]) {
 		}
 	}
 }
+
 number Tmatrix::determinant(number matrix[10][10], int n) {
 	number det = 0;
 	number submatrix[10][10];
@@ -103,4 +105,55 @@ void Tmatrix::Transposition() {
 			arr[i][j] = arr2[j][i];
 		}
 	}
+}
+int Tmatrix::rank() {
+	number** matrix;
+	matrix = new number * [capacity];
+	for (int i = 0; i < capacity; i++) {
+		matrix[i] = new number[capacity];
+	}
+	for (int i = 0; i < capacity; i++) {
+		for (int j = 0; j < capacity; j++) {
+			matrix[i][j] = arr[i][j];
+		}
+	}
+	int rank = 0;
+
+	for (int col = 0; col < capacity; col++) {
+		// Находим первый ненулевой элемент в текущем столбце
+		int nonzeroRow = -1;
+		for (int row = rank; row < capacity; row++) {
+			if (matrix[row][col] != 0.0) {
+				nonzeroRow = row;
+				break;
+			}
+		}
+
+		if (nonzeroRow != -1) {
+			// Меняем строки местами, чтобы сделать ненулевой элемент ведущим
+			if (nonzeroRow != rank) {
+				std::swap(matrix[nonzeroRow], matrix[rank]);
+			}
+
+			// Масштабируем ведущую строку, чтобы сделать ведущий элемент равным 1
+			double pivot = matrix[rank][col];
+			for (int i = 0; i < capacity; i++) {
+				matrix[rank][i] /= pivot;
+			}
+
+			// Элиминируем другие строки
+			for (int row = 0; row < capacity; row++) {
+				if (row != rank) {
+					double factor = matrix[row][col];
+					for (int i = 0; i < capacity; i++) {
+						matrix[row][i] -= factor * matrix[rank][i];
+					}
+				}
+			}
+
+			rank++;
+		}
+	}
+
+	return rank;
 }
