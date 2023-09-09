@@ -17,25 +17,17 @@ Tmatrix::Tmatrix() {
 	}
 
 }
-void Tmatrix::FillMatrix(int cap) {
-	HANDLE Output = GetStdHandle(STD_OUTPUT_HANDLE);
+void Tmatrix::FillMatrix(int cap,number** matrix) {
 	capacity = cap;
 	arr = new number * [capacity];
 	for (int i = 0; i < capacity; i++) {
 		arr[i] = new number[capacity];
 	}
-	COORD cord{ 0,2 };
-
-	printf("fill in the matrix \n");
 	for (int i = 0; i < capacity; i++) {
 		for (int j = 0; j < capacity; j++) {
-			SetConsoleCursorPosition(Output, cord);
-			cin >> arr[i][j];
-			cord.X += 5;
+			arr[i][j]=matrix[i][j];
 		}
-		cord.Y += 1; cord.X = 0;
 	}
-	system("cls");
 }
 void Tmatrix::PrintMatrix() {
 	
@@ -120,7 +112,6 @@ int Tmatrix::rank() {
 	int rank = 0;
 
 	for (int col = 0; col < capacity; col++) {
-		// Находим первый ненулевой элемент в текущем столбце
 		int nonzeroRow = -1;
 		for (int row = rank; row < capacity; row++) {
 			if (matrix[row][col] != 0.0) {
@@ -130,18 +121,13 @@ int Tmatrix::rank() {
 		}
 
 		if (nonzeroRow != -1) {
-			// Меняем строки местами, чтобы сделать ненулевой элемент ведущим
 			if (nonzeroRow != rank) {
 				std::swap(matrix[nonzeroRow], matrix[rank]);
 			}
-
-			// Масштабируем ведущую строку, чтобы сделать ведущий элемент равным 1
 			double pivot = matrix[rank][col];
 			for (int i = 0; i < capacity; i++) {
 				matrix[rank][i] /= pivot;
 			}
-
-			// Элиминируем другие строки
 			for (int row = 0; row < capacity; row++) {
 				if (row != rank) {
 					double factor = matrix[row][col];
@@ -150,10 +136,8 @@ int Tmatrix::rank() {
 					}
 				}
 			}
-
 			rank++;
 		}
 	}
-
 	return rank;
 }
