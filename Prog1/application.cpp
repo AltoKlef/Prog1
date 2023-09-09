@@ -30,7 +30,7 @@ int Tapplication::exec()
 			for (int i = 0; i < capacity; i++) {
 				arr[i] = new number[capacity];
 			}
-			cord.Y = 4;
+			cord.Y = 2;
 			printf("fill in the matrix \n");
 			for (int i = 0; i < capacity; i++) {
 				for (int j = 0; j < capacity; j++) {
