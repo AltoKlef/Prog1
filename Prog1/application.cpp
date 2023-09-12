@@ -23,25 +23,7 @@ int Tapplication::exec()
 		{
 		case 49:
 			system("cls");
-			printf("fill in the capacity = ");
-			cin >> capacity;
-			number** arr;
-			arr = new number * [capacity];
-			for (int i = 0; i < capacity; i++) {
-				arr[i] = new number[capacity];
-			}
-			cord.Y = 2;
-			printf("fill in the matrix \n");
-			for (int i = 0; i < capacity; i++) {
-				for (int j = 0; j < capacity; j++) {
-					SetConsoleCursorPosition(Output, cord);
-					cin >> arr[i][j];
-					cord.X += 5;
-				}
-				cord.Y += 1; cord.X = 0;
-			}
-			matrix.FillMatrix(capacity,arr);
-			system("cls");
+			matrix.FillMatrix();
 			break;
 		case 50:
 			system("cls");
@@ -107,6 +89,7 @@ int Tapplication::exec()
 			return 0;
 			break;
 		default:
+			system("cls");
 			break;
 
 		}

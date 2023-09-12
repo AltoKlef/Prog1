@@ -6,9 +6,7 @@ using namespace std;
 int main()
 {
     Tapplication a;
-
     return a.exec();
-    
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

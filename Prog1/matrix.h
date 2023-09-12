@@ -13,7 +13,7 @@ class Tmatrix
 	//number capacity, coloumns_f;
 public:
 	Tmatrix();
-	void FillMatrix(int cap,number** matrix);
+	void FillMatrix();
 	void PrintMatrix();
 	number PrintDet();
 	void Transposition();

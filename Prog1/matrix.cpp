@@ -1,10 +1,10 @@
-#include <Windows.h>
+
 #include "matrix.h"
 #include <iostream>
 #include <algorithm>
-
 using namespace std;
 Tmatrix::Tmatrix() {
+	
 	arr = new number * [capacity];
 	for (int i = 0; i < capacity; i++) {
 		arr[i] = new number[capacity];
@@ -17,15 +17,18 @@ Tmatrix::Tmatrix() {
 	}
 
 }
-void Tmatrix::FillMatrix(int cap,number** matrix) {
-	capacity = cap;
+void Tmatrix::FillMatrix() {
+	printf("fill in the capacity = ");
+	cin >> capacity;
 	arr = new number * [capacity];
 	for (int i = 0; i < capacity; i++) {
 		arr[i] = new number[capacity];
 	}
+	printf("fill in the matrix \n");
 	for (int i = 0; i < capacity; i++) {
 		for (int j = 0; j < capacity; j++) {
-			arr[i][j]=matrix[i][j];
+			cout << "element" << "[" << i << "]" << "[" << j << "]:";
+			cin >> arr[i][j];
 		}
 	}
 }
