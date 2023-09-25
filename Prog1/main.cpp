@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
     Tapplication a;
+    cout << "aboab";
     return a.exec();
 }
 
